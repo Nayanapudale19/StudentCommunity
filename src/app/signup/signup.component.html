@@ -1,0 +1,62 @@
+<div class="container">
+    <form #f="ngForm" (ngSubmit)="Signup(f)">
+        <div class="student-data">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" required minlength="10" maxlength="" pattern="^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$" ngModel name="name" #name="ngModel" id="" class="form-control">
+                <div class="alert alert-danger" *ngIf="!name.valid && name.touched">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                    <div *ngIf="name.errors.minlength">Name should be minimum {{name.errors.minlength.requiredLength}} characters</div>
+                    <div *ngIf="name.errors.pattern">Name shouldn't match with pattern</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" required email  ngModel name="email" #email="ngModel" id="" class="form-control">
+                <div class="alert alert-danger" *ngIf="!email.valid && email.touched">Please enter valid email</div>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date Of Birth</label>
+                <input type="date" required ngModel name="dob" #dob="ngModel" id="" class="form-control">
+                <div class="alert alert-danger" *ngIf="!dob.valid && dob.touched">Date Of Birth is required</div>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                 <input type="file" accept="image/*" (change)="file(image)" required ngModel name="image" #image="ngModel" src="" alt="" class="form-control"> 
+                <div class="alert alert-danger" *ngIf="!image.valid && image.touched">Image is required</div> 
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select ngModel name="country" id="" class="form-control">
+                    <option *ngFor="let country of country" [value]="country">{{country}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.valid">Signup</button>
+        </div>
+    </form>
+
+    <div class="user-student" *ngIf="submitted">
+        <div class="col-xs-12">
+            <table class="table table-bordered bg-light">
+                <thead>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Image</th>
+                    <th>Country</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{user.Name}}</td>
+                        <td>{{user.Email}}</td>
+                        <td>{{user.Dob | age}}</td>
+                        <td>{{user.Image}}</td>
+                        <td>{{user.Country}}</td>
+                        <td><button type="button">Save</button></td>
+                        <td><button type="button" (click)="submitted=false">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

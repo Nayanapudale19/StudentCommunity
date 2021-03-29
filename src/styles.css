@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap\dist\css\bootstrap.css";
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color:rgba(0,0,0,0.8);
+}
+.student-data{
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    background-color: floralwhite;
+    font:bold 100px;
+    font-size: large;
+    font-weight: bold;
+}
